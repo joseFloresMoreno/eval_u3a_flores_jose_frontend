@@ -62,5 +62,3 @@ git stash pop
 - Puedo generar un `tailwind.config.js` con la paleta oficial, una colección de Postman para administrar contenido (testimonios, servicios) y/o integrar un CMS cuando lo decidas.
 
 ---
-
-Si querés, actualizo el README con secciones específicas (ej. cómo desplegar en Vercel, cómo ejecutar tests, o una mini-guía de uso de Postman). ¿Qué quieres que añada ahora? 
