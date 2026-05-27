@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Landing SERCOTEC - Proyecto (Next.js + Tailwind)
 
-## Getting Started
+Este repositorio contiene la landing page que recrea y adapta la referencia de SERCOTEC. El contenido y los componentes están pensados para un entorno de aprendizaje: claro, accesible y fácil de modificar.
 
-First, run the development server:
+Tono: esta documentación está escrita para estudiantes de Ingeniería en Informática — directa, sin jerga innecesaria y con pasos prácticos.
 
+---
+
+## Requisitos
+- Node.js (16+ recomendado)
+- npm (o yarn / pnpm)
+
+## Scripts útiles
+- `npm run dev` → arranca el servidor de desarrollo (http://localhost:3000).
+- `npm run build` → construye para producción.
+- `npm run start` → ejecuta la app construida.
+- `npm run lint` → corre ESLint para detectar problemas de estilo/errores.
+
+Ejemplo rápido:
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estructura principal (rápida)
+- `app/` – páginas y componentes (App Router de Next.js).
+- `app/components/` – componentes reutilizables (Header, ServiceCard, ContactForm, TestimonialCarousel...).
+- `public/` – imágenes y assets estáticos.
+- `docs/` – documentación del proyecto (aquí está `development-guidelines.md`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Qué encontrarás en la documentación
+- `docs/development-guidelines.md`: guía de buenas prácticas en lenguaje sencillo (nombres, estructura, accesibilidad, cómo trabajar en equipo).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Buenas prácticas para commits (rápido y útil)
+- Trabaja en ramas: `feature/nombre-corto`.
+- Un commit = una idea o cambio coherente.
+- Mensajes en español y en imperativo, por ejemplo: `Funcionalidad: carrusel de testimonios (UI)`.
+- Si tienes muchos cambios, usa `git add -p` para añadir porciones (hunks) y crear varios commits pequeños.
 
-## Learn More
+Comandos útiles:
+```bash
+git add -p           # añadir por hunk
+git add path/to/file # añadir archivo completo
+git commit -m "Mensaje claro en español"
+```
 
-To learn more about Next.js, take a look at the following resources:
+Si necesitas mover cambios entre ramas sin commitear:
+```bash
+git stash push -m "WIP: descripción"
+git checkout feature/x
+git stash pop
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Cómo probar en móvil
+- Abre la app en `http://localhost:3000` y usa las herramientas de desarrollador del navegador (inspector) para simular un móvil.
+- Revisa que los botones sean fáciles de tocar y que no haya scroll horizontal.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Lint y chequeos antes de subir
+- Corre `npm run lint` y arregla los problemas antes de hacer PR.
 
-## Deploy on Vercel
+## Documentación y siguiente pasos (si quieres que lo haga yo)
+- Puedo generar un `tailwind.config.js` con la paleta oficial, una colección de Postman para administrar contenido (testimonios, servicios) y/o integrar un CMS cuando lo decidas.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Si querés, actualizo el README con secciones específicas (ej. cómo desplegar en Vercel, cómo ejecutar tests, o una mini-guía de uso de Postman). ¿Qué quieres que añada ahora? 
