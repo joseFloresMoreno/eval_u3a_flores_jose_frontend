@@ -1,65 +1,201 @@
-import Image from "next/image";
+import Header from "./components/Header";
+import ServiceCard from "./components/ServiceCard";
+import ContactForm from "./components/ContactForm";
+import TestimonialCarousel from "./components/TestimonialCarousel";
+
+const regiones = [
+  "Arica y Parinacota",
+  "Tarapaca",
+  "Antofagasta",
+  "Atacama",
+  "Coquimbo",
+  "Valparaiso",
+  "Metropolitana",
+  "O'Higgins",
+  "Maule",
+  "Nuble",
+  "Biobio",
+  "La Araucania",
+  "Los Rios",
+  "Los Lagos",
+  "Aysen",
+  "Magallanes",
+];
+
+const servicios = [
+  {
+    titulo: "Diagnostico Empresarial",
+    detalle:
+      "Analisis inicial para detectar oportunidades comerciales, financieras y operativas.",
+  },
+  {
+    titulo: "Asesoria Personalizada",
+    detalle:
+      "Acompanamiento tecnico en formalizacion, gestion, ventas, costos y planificacion.",
+  },
+  {
+    titulo: "Formacion y Talleres",
+    detalle:
+      "Capacitaciones practicas para mejorar habilidades de negocios y productividad.",
+  },
+  {
+    titulo: "Vinculacion y Redes",
+    detalle:
+      "Conexiones con instituciones, mercados, fuentes de financiamiento y alianzas.",
+  },
+];
+
+const noticias = [
+  "Emprendedoras fortalecen su estrategia comercial con acompanamiento gratuito",
+  "Nuevos talleres de formalizacion para pymes y negocios locales",
+  "Encuentros de vinculacion impulsan redes empresariales regionales",
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-[linear-gradient(165deg,#f6f6f6_0%,#ffffff_35%,#f1f1f1_100%)] text-[#212529]">
+      <div className="mx-auto w-full max-w-6xl px-6 pb-16 pt-8 md:px-10">
+        <Header />
+
+        <section className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+          <div>
+            <p className="mb-4 inline-flex rounded-full border border-[#3ea4c9]/30 bg-[#3ea4c9]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#043f6c]">
+              Asesoria gratuita para pymes
+            </p>
+            <h2 className="text-4xl font-black leading-tight tracking-tight text-slate-900 md:text-6xl">
+              Impulsa tu negocio
+              <span className="block text-[#3ea4c9]">con apoyo experto</span>
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-8 text-slate-700 md:text-lg">
+              Acompanamos a emprendedores y pequenas empresas con asesorias,
+              capacitaciones y vinculacion comercial para que crezcan con una
+              estrategia sostenible en su territorio.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#servicios"
+                className="rounded-full bg-[#ef4040] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#d53a3a]"
+              >
+                Ver servicios
+              </a>
+              <a
+                href="#cobertura"
+                className="rounded-full border border-[#3ea4c9]/40 px-6 py-3 text-sm font-semibold text-[#09395f] transition hover:border-[#3ea4c9] hover:text-[#3ea4c9]"
+              >
+                Explorar cobertura
+              </a>
+            </div>
+          </div>
+
+          <aside className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_24px_48px_rgba(9,57,95,0.12)]">
+            <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-slate-500">
+              Alcance nacional
+            </h3>
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              <div className="rounded-2xl bg-[#3ea4c9]/12 p-4">
+                <p className="text-3xl font-black text-[#09395f]">16</p>
+                <p className="mt-1 text-sm text-[#043f6c]">Regiones activas</p>
+              </div>
+              <div className="rounded-2xl bg-[#09395f]/10 p-4">
+                <p className="text-3xl font-black text-[#09395f]">+50</p>
+                <p className="mt-1 text-sm text-[#043f6c]">Centros de apoyo</p>
+              </div>
+              <div className="rounded-2xl bg-[#eaa824]/15 p-4">
+                <p className="text-3xl font-black text-[#09395f]">1:1</p>
+                <p className="mt-1 text-sm text-[#09395f]">Mentoria experta</p>
+              </div>
+              <div className="rounded-2xl bg-[#f1f1f1] p-4">
+                <p className="text-3xl font-black text-[#09395f]">100%</p>
+                <p className="mt-1 text-sm text-[#043f6c]">Sin costo</p>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section id="servicios" className="mt-20">
+          <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Que ofrecemos
+              </p>
+              <h3 className="mt-1 text-3xl font-black tracking-tight text-slate-900">
+                Servicios para crecer mejor
+              </h3>
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {servicios.map((servicio) => (
+              <ServiceCard key={servicio.titulo} title={servicio.titulo} description={servicio.detalle} />
+            ))}
+          </div>
+        </section>
+
+        <section id="cobertura" className="mt-20 rounded-3xl bg-[#09395f] p-8 md:p-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ef4040]">
+            Cobertura territorial
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+          <h3 className="mt-2 text-3xl font-black tracking-tight text-white">
+            Estamos presentes en todo Chile
+          </h3>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
+            Busca el centro mas cercano y accede a acompanamiento empresarial
+            especializado para fortalecer tu negocio en cada etapa de crecimiento.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-2">
+            {regiones.map((region) => (
+              <span
+                key={region}
+                className="rounded-full border border-[#516f8e] bg-[#043f6c] px-3 py-1.5 text-xs font-semibold text-[#f6f6f6]"
+              >
+                {region}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        <section id="testimonios" className="mt-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Voces de emprendedores</p>
+          <h3 className="mt-1 text-3xl font-black tracking-tight text-slate-900">Testimonios</h3>
+          <div className="mt-6">
+            <TestimonialCarousel
+              items={[
+                { quote: "La asesoría me ayudó a identificar oportunidades de venta y organizar mis finanzas. Recomendable 100%.", author: "Ana, emprendedora local" },
+                { quote: "Participar en los talleres aceleró nuestra estrategia digital y nos conectó con clientes nuevos en la región.", author: "Talleres Ltda." },
+                { quote: "Los mentores nos ayudaron a mejorar la presentación de nuestro proyecto, logramos un pequeño financiamiento.", author: "Microventa S.A." },
+                { quote: "Las prácticas y el seguimiento marcaron una diferencia real en nuestras ventas mensuales.", author: "Panadería La esquina" },
+                { quote: "El programa nos conectó con proveedores y nos enseñó a controlar los costos. Muy útil.", author: "EcoTienda" },
+              ]}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          </div>
+        </section>
+
+        <section id="noticias" className="mt-20">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+              Noticias
+            </p>
+            <h3 className="mt-1 text-3xl font-black tracking-tight text-slate-900">
+              Historias recientes de impacto
+            </h3>
+            <div className="mt-6 space-y-3">
+              {noticias.map((item) => (
+                <article
+                  key={item}
+                  className="rounded-2xl border border-slate-200 bg-white p-5"
+                >
+                  <p className="text-sm leading-7 text-slate-700">{item}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="contactanos" className="mt-20">
+          <div className="mx-auto max-w-6xl px-2">
+            <ContactForm servicios={servicios.map((s) => s.titulo)} />
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
