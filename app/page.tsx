@@ -7,6 +7,7 @@ import FaqSection from "./components/FaqSection";
 import about from "../data/about.json";
 import services from "../data/services.json";
 import faqs from "../data/faqs.json";
+import SectionTitle from "./components/SectionTitle";
 
 const regiones = [
   "Arica y Parinacota",
@@ -118,7 +119,7 @@ export default function Home() {
 
         <section id="testimonios" className="mt-20 scroll-mt-20">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Voces de emprendedores</p>
-          <h3 className="mt-1 text-3xl font-black tracking-tight text-slate-900">Testimonios</h3>
+          <SectionTitle title="Testimonios" variant="default" />
           <div className="mt-6">
             <TestimonialCarousel
               items={[
