@@ -93,7 +93,7 @@ export default function Home() {
 
         <ServicesSection services={services} />
 
-        <section id="cobertura" className="mt-20 rounded-3xl bg-[#09395f] p-8 md:p-10">
+        <section id="cobertura" className="mt-20 scroll-mt-20 rounded-3xl bg-[#09395f] p-8 md:p-10">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ef4040]">
             Cobertura territorial
           </p>
@@ -116,7 +116,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="testimonios" className="mt-20">
+        <section id="testimonios" className="mt-20 scroll-mt-20">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Voces de emprendedores</p>
           <h3 className="mt-1 text-3xl font-black tracking-tight text-slate-900">Testimonios</h3>
           <div className="mt-6">
@@ -136,7 +136,7 @@ export default function Home() {
 
         <FaqSection faqs={faqs} />
 
-        <section id="contactanos" className="mt-20">
+        <section id="contactanos" className="mt-20 scroll-mt-20">
           <div className="mx-auto max-w-6xl px-2">
             <ContactForm servicios={services.map((s: { title: string }) => s.title)} />
           </div>
