@@ -4,6 +4,9 @@ import TestimonialCarousel from "./components/TestimonialCarousel";
 import AboutSection from "./components/AboutSection";
 import ServicesSection from "./components/ServicesSection";
 import FaqSection from "./components/FaqSection";
+import about from "../data/about.json";
+import services from "../data/services.json";
+import faqs from "../data/faqs.json";
 
 const regiones = [
   "Arica y Parinacota",
@@ -26,17 +29,8 @@ const regiones = [
 
 // Data will be fetched from internal API routes
 
-export default async function Home() {
-  const base = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000';
-  const [aboutRes, servicesRes, faqsRes] = await Promise.all([
-    fetch(`${base}/api/about`, { next: { revalidate: 60 } }),
-    fetch(`${base}/api/services`, { next: { revalidate: 60 } }),
-    fetch(`${base}/api/faqs`, { next: { revalidate: 60 } }),
-  ]);
-
-  const about = await aboutRes.json();
-  const services = await servicesRes.json();
-  const faqs = await faqsRes.json();
+export default function Home() {
+  // Use local JSON data (server-side import) to avoid runtime URL/fetch issues in dev
   return (
     <main className="min-h-screen bg-[linear-gradient(165deg,#f6f6f6_0%,#ffffff_35%,#f1f1f1_100%)] text-[#212529]">
       <div className="mx-auto w-full max-w-6xl px-6 pb-16 pt-8 md:px-10">
@@ -144,7 +138,7 @@ export default async function Home() {
 
         <section id="contactanos" className="mt-20">
           <div className="mx-auto max-w-6xl px-2">
-            <ContactForm servicios={services.map((s) => s.title)} />
+            <ContactForm servicios={services.map((s: { title: string }) => s.title)} />
           </div>
         </section>
       </div>
