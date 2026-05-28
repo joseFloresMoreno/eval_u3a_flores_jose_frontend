@@ -2,7 +2,9 @@
   "title": "Sobre nosotros",
   "intro": "Somos una red de centros de apoyo que entrega asesoría gratuita y capacitación a emprendedores y pequeñas empresas en todo Chile.",
   "team": [
-    { "name": "María Pérez", "role": "Coordinadora regional", "image": "https://i.pravatar.cc/300?img=47" },
-    { "name": "José Ramírez", "role": "Especialista en negocio", "image": "https://i.pravatar.cc/300?img=12" }
+    { "name": "María Pérez", "role": "Coordinadora regional", "image": "/avatars/maria-perez.svg" },
+    { "name": "José Ramírez", "role": "Especialista en negocio", "image": "/avatars/jose-ramirez.svg" }
+    ,{ "name": "Ana López", "role": "Encargada de formación", "image": "/avatars/ana-lopez.svg" },
+    { "name": "Carlos Soto", "role": "Analista de mercado", "image": "/avatars/carlos-soto.svg" }
   ]
 }
