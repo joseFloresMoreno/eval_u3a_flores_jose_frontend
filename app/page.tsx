@@ -1,7 +1,9 @@
 import Header from "./components/Header";
-import ServiceCard from "./components/ServiceCard";
 import ContactForm from "./components/ContactForm";
 import TestimonialCarousel from "./components/TestimonialCarousel";
+import AboutSection from "./components/AboutSection";
+import ServicesSection from "./components/ServicesSection";
+import FaqSection from "./components/FaqSection";
 
 const regiones = [
   "Arica y Parinacota",
@@ -22,36 +24,19 @@ const regiones = [
   "Magallanes",
 ];
 
-const servicios = [
-  {
-    titulo: "Diagnostico Empresarial",
-    detalle:
-      "Analisis inicial para detectar oportunidades comerciales, financieras y operativas.",
-  },
-  {
-    titulo: "Asesoria Personalizada",
-    detalle:
-      "Acompanamiento tecnico en formalizacion, gestion, ventas, costos y planificacion.",
-  },
-  {
-    titulo: "Formacion y Talleres",
-    detalle:
-      "Capacitaciones practicas para mejorar habilidades de negocios y productividad.",
-  },
-  {
-    titulo: "Vinculacion y Redes",
-    detalle:
-      "Conexiones con instituciones, mercados, fuentes de financiamiento y alianzas.",
-  },
-];
+// Data will be fetched from internal API routes
 
-const noticias = [
-  "Emprendedoras fortalecen su estrategia comercial con acompanamiento gratuito",
-  "Nuevos talleres de formalizacion para pymes y negocios locales",
-  "Encuentros de vinculacion impulsan redes empresariales regionales",
-];
+export default async function Home() {
+  const base = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000';
+  const [aboutRes, servicesRes, faqsRes] = await Promise.all([
+    fetch(`${base}/api/about`, { next: { revalidate: 60 } }),
+    fetch(`${base}/api/services`, { next: { revalidate: 60 } }),
+    fetch(`${base}/api/faqs`, { next: { revalidate: 60 } }),
+  ]);
 
-export default function Home() {
+  const about = await aboutRes.json();
+  const services = await servicesRes.json();
+  const faqs = await faqsRes.json();
   return (
     <main className="min-h-screen bg-[linear-gradient(165deg,#f6f6f6_0%,#ffffff_35%,#f1f1f1_100%)] text-[#212529]">
       <div className="mx-auto w-full max-w-6xl px-6 pb-16 pt-8 md:px-10">
@@ -112,23 +97,7 @@ export default function Home() {
           </aside>
         </section>
 
-        <section id="servicios" className="mt-20">
-          <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                Que ofrecemos
-              </p>
-              <h3 className="mt-1 text-3xl font-black tracking-tight text-slate-900">
-                Servicios para crecer mejor
-              </h3>
-            </div>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {servicios.map((servicio) => (
-              <ServiceCard key={servicio.titulo} title={servicio.titulo} description={servicio.detalle} />
-            ))}
-          </div>
-        </section>
+        <ServicesSection services={services} />
 
         <section id="cobertura" className="mt-20 rounded-3xl bg-[#09395f] p-8 md:p-10">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ef4040]">
@@ -169,30 +138,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="noticias" className="mt-20">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-              Noticias
-            </p>
-            <h3 className="mt-1 text-3xl font-black tracking-tight text-slate-900">
-              Historias recientes de impacto
-            </h3>
-            <div className="mt-6 space-y-3">
-              {noticias.map((item) => (
-                <article
-                  key={item}
-                  className="rounded-2xl border border-slate-200 bg-white p-5"
-                >
-                  <p className="text-sm leading-7 text-slate-700">{item}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <AboutSection about={about} />
+
+        <FaqSection faqs={faqs} />
 
         <section id="contactanos" className="mt-20">
           <div className="mx-auto max-w-6xl px-2">
-            <ContactForm servicios={servicios.map((s) => s.titulo)} />
+            <ContactForm servicios={services.map((s) => s.title)} />
           </div>
         </section>
       </div>

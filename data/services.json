@@ -1,0 +1,26 @@
+[
+  {
+    "id": "diagnostico-empresarial",
+    "title": "Diagnóstico Empresarial",
+    "excerpt": "Análisis inicial para detectar oportunidades comerciales, financieras y operativas.",
+    "image": ""
+  },
+  {
+    "id": "asesoria-personalizada",
+    "title": "Asesoría Personalizada",
+    "excerpt": "Acompañamiento técnico en formalización, gestión, ventas, costos y planificación.",
+    "image": ""
+  },
+  {
+    "id": "formacion-talleres",
+    "title": "Formación y Talleres",
+    "excerpt": "Capacitaciones prácticas para mejorar habilidades de negocios y productividad.",
+    "image": ""
+  },
+  {
+    "id": "vinculacion-redes",
+    "title": "Vinculación y Redes",
+    "excerpt": "Conexiones con instituciones, mercados y fuentes de financiamiento.",
+    "image": ""
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "title": "Sobre nosotros",
+  "intro": "Somos una red de centros de apoyo que entrega asesoría gratuita y capacitación a emprendedores y pequeñas empresas en todo Chile.",
+  "team": [
+    { "name": "María Pérez", "role": "Coordinadora regional", "image": "" },
+    { "name": "José Ramírez", "role": "Especialista en negocio", "image": "" }
+  ]
+}
