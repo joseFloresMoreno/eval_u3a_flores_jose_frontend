@@ -1,64 +1,84 @@
-# Landing SERCOTEC - Proyecto (Next.js + Tailwind)
+# Modernización Sitio SERCOTEC — Proyecto de Landing
 
-Este repositorio contiene la landing page que recrea y adapta la referencia de SERCOTEC. El contenido y los componentes están pensados para un entorno de aprendizaje: claro, accesible y fácil de modificar.
+Este repositorio es una propuesta de modernización para el sitio de Centros de Negocios Sercotec. El objetivo es ofrecer una landing clara, accesible y fácil de mantener, orientada a comunicar servicios, testimonios y contacto para pymes.
 
-Tono: esta documentación está escrita para estudiantes de Ingeniería en Informática — directa, sin jerga innecesaria y con pasos prácticos.
 
----
+Principios del proyecto:
+- Enfoque en contenido: priorizar la legibilidad y la navegación rápida.
+- Accesibilidad y responsive: diseñado para funcionar bien en móviles y escritorio.
+- Componentes reutilizables: facilitar futuras extensiones y un eventual CMS.
 
-## Requisitos
-- Node.js (16+ recomendado)
-- npm (o yarn / pnpm)
+Qué incluye:
+- Secciones: Hero, Servicios, Testimonios, Nosotros, Preguntas frecuentes y Contacto.
+- Componentes interactivos: carrusel de testimonios, tarjetas de servicios y formulario de contacto con validación.
+- Datos locales (JSON) y endpoints internos para facilitar la transición a un CMS.
 
-## Scripts útiles
-- `npm run dev` → arranca el servidor de desarrollo (http://localhost:3000).
-- `npm run build` → construye para producción.
-- `npm run start` → ejecuta la app construida.
-- `npm run lint` → corre ESLint para detectar problemas de estilo/errores.
 
-Ejemplo rápido:
+***
+
+## Estructura del proyecto (detallada)
+- `app/page.tsx` — punto de entrada de la landing; compone las secciones.
+- `app/layout.tsx` + `app/globals.css` — layout global y tipografía.
+- `app/components/` — componentes reutilizables:
+	- `Header.tsx` — header sticky y navegación.
+	- `ServiceCard.tsx` — tarjeta de servicio (propiedades: `title`, `excerpt`, `image`), dispara `CustomEvent('select-service')` al clicar el CTA.
+	- `ContactForm.tsx` — componente cliente con validación (prop: `servicios: string[]`) y escucha `select-service` para preseleccionar servicio.
+	- `TestimonialCarousel.tsx` — carrusel accesible (prop: `items`).
+	- `SectionTitle.tsx` — título estándar para secciones.
+- `data/` — JSON con `about.json`, `services.json`, `faqs.json`.
+- `app/api/*/route.ts` — endpoints internos que sirven los JSON (útiles para migrar a CMS).
+
+## Instrucciones de instalación
+
+1. Instala dependencias:
 ```bash
 npm install
+```
+2. Ejecuta en modo desarrollo:
+```bash
 npm run dev
 ```
 
-## Estructura principal (rápida)
-- `app/` – páginas y componentes (App Router de Next.js).
-- `app/components/` – componentes reutilizables (Header, ServiceCard, ContactForm, TestimonialCarousel...).
-- `public/` – imágenes y assets estáticos.
-- `docs/` – documentación del proyecto (aquí está `development-guidelines.md`).
+## Guía de uso de los componentes
 
-## Qué encontrarás en la documentación
-- `docs/development-guidelines.md`: guía de buenas prácticas en lenguaje sencillo (nombres, estructura, accesibilidad, cómo trabajar en equipo).
+- `ServiceCard`
+```tsx
+<ServiceCard title="Asesoría financiera" excerpt="Diagnóstico y plan" image="/path.jpg" />
+```
+Comportamiento: muestra botón `Contáctanos` que dispara `CustomEvent('select-service', { detail: title })`.
 
-## Buenas prácticas para commits (rápido y útil)
-- Trabaja en ramas: `feature/nombre-corto`.
-- Un commit = una idea o cambio coherente.
-- Mensajes en español y en imperativo, por ejemplo: `Funcionalidad: carrusel de testimonios (UI)`.
-- Si tienes muchos cambios, usa `git add -p` para añadir porciones (hunks) y crear varios commits pequeños.
+- `ContactForm` (cliente)
+```tsx
+<ContactForm servicios={["Asesoría financiera", "Talleres"]} />
+```
+Comportamiento: formulario con `name`, `email`, `servicio` (select) y `message`. Escucha el evento `select-service` para rellenar `servicio` automáticamente.
 
-Comandos útiles:
-```bash
-git add -p           # añadir por hunk
-git add path/to/file # añadir archivo completo
-git commit -m "Mensaje claro en español"
+- `TestimonialCarousel`
+```tsx
+<TestimonialCarousel items={[{quote: 'Gran apoyo', author: 'Ana'}]} />
+```
+Comportamiento: muestra un testimonio a la vez, autoplay y navegación por teclado.
+
+- `SectionTitle`
+```tsx
+<SectionTitle title="Servicios" eyebrow="Lo que ofrecemos" variant="dark" />
+```
+Usar para homogeneizar títulos de sección y la paleta de colores.
+
+## Ejemplos rápidos
+- Importar datos y renderizar sección de servicios en `app/page.tsx`:
+```tsx
+import services from '../data/services.json';
+<ServicesSection services={services} />
 ```
 
-Si necesitas mover cambios entre ramas sin commitear:
-```bash
-git stash push -m "WIP: descripción"
-git checkout feature/x
-git stash pop
-```
 
-## Cómo probar en móvil
-- Abre la app en `http://localhost:3000` y usa las herramientas de desarrollador del navegador (inspector) para simular un móvil.
-- Revisa que los botones sean fáciles de tocar y que no haya scroll horizontal.
+## Colaboración y flujo sugerido:
 
-## Lint y chequeos antes de subir
-- Corre `npm run lint` y arregla los problemas antes de hacer PR.
+- Trabaja en ramas: `feature/nombre`.
+- Commits claros y pequeños; PR para revisión.
+- Mantén las piezas de contenido en `data/`.
 
-## Documentación y siguiente pasos (si quieres que lo haga yo)
-- Puedo generar un `tailwind.config.js` con la paleta oficial, una colección de Postman para administrar contenido (testimonios, servicios) y/o integrar un CMS cuando lo decidas.
 
----
+Contacto del proyecto:
+- Autor: José Flores — Estudiante de Ingeniería en Informática. Pruebas y mejoras bienvenidas.
